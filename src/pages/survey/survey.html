@@ -1,0 +1,88 @@
+<!--
+  Generated template for the Survey page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>Survey</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="surveyForm" style="padding: 15px 0 0 0;">
+    <ion-list class="survey">
+
+      <ion-item>
+        <ion-input [(ngModel)]="profile.name" formControlName="name"
+                   [class.invalid]="!surveyForm.controls.name.valid &&
+                                     surveyForm.controls.name.dirty"
+                  placeholder="NickName" type="text" value=""></ion-input>
+        <ion-icon name="contact" item-left></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Faixa etária</ion-label>
+        <ion-select [(ngModel)]="profile.ageGroup" formControlName="ageGroup"
+                    [class.invalid]="!surveyForm.controls.ageGroup.valid &&
+                                      surveyForm.controls.ageGroup.dirty"
+                    interface="action-sheet" cancelText="Cancelar">
+          <ion-option value="a">18-24 anos</ion-option>
+          <ion-option value="j">25-39 anos</ion-option>
+          <ion-option value="ad">40-49 anos</ion-option>
+          <ion-option value="e">50-59 anos</ion-option>
+          <ion-option value="s">60 anos ou mais</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Genêro</ion-label>
+        <ion-select [(ngModel)]="profile.genre" formControlName="genre"
+                    [class.invalid]="!surveyForm.controls.genre.valid &&
+                                     surveyForm.controls.genre.dirty"
+                     interface="action-sheet"  cancelText="Cancelar">
+          <ion-option value="f">Feminino</ion-option>
+          <ion-option value="m">Masculino</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Status de relacionamento</ion-label>
+        <ion-select [(ngModel)]="profile.relationship" formControlName="relationship"
+                    [class.invalid]="!surveyForm.controls.relationship.valid &&
+                                     surveyForm.controls.relationship.dirty"
+                     interface="action-sheet"  cancelText="Cancelar">
+          <ion-option value="s">Solteiro</ion-option>
+          <ion-option value="c">Casado</ion-option>
+          <ion-option value="co">Complicado</ion-option>
+          <ion-option value="a">Aberto</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label>Orientação</ion-label>
+        <ion-select [(ngModel)]="profile.orientation" formControlName="orientation"
+                    [class.invalid]="!surveyForm.controls.orientation.valid &&
+                                     surveyForm.controls.orientation.dirty"
+                     interface="action-sheet"  cancelText="Cancelar">
+          <ion-option value="he">Hétero</ion-option>
+          <ion-option value="ho">Homossexual</ion-option>
+          <ion-option value="bi">Bissexual</ion-option>
+          <ion-option value="tr">Transsexual</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+    </ion-list>
+
+      <button ion-button full class="button" [disabled]="!surveyForm.valid" (click)="goToHome()">
+        Continuar
+      </button>
+  </form>
+
+
+
+</ion-content>
