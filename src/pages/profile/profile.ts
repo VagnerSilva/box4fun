@@ -5,18 +5,16 @@ import { DataSerivce } from '../../providers/providers'
 
 
 export class User {
-  public user: any = {};
-
 
   private storage = new DataSerivce();
 
   constructor() { }
 
-
+/**
+ *
+ */
   get email(): any {
     return this.storage.read('user').then(user => {
-      console.log('read');
-      console.log(user);
       return user.email;
     })
 
