@@ -23,14 +23,24 @@ export class User {
   set email(email: any) {
     let e = {'email': email}
     this.storage.save('user', e);
-   // this.user.email = email;
   }
 
+
+/**
+ *
+ * @param user
+ * @return void
+ */
   saveProfile(user): void {
     this.storage.save('user', user);
   }
 
-  clean(k): void {
+/**
+ *
+ * @param k  key
+ * @return void
+ */
+  delete(k): void {
     this.storage.remove(k);
   }
 
