@@ -38,7 +38,7 @@ export class SurveyPage {
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
 
     this.surveyForm = formBuilder.group({
-      name: ['', Validators.compose([Validators.minLength(5), NameValidator.isValid])],
+      name: ['', Validators.compose([Validators.minLength(5), Validators.maxLength(16), NameValidator.isValid])],
       ageGroup: ['', Validators.compose([Validators.required])],
       genre: ['', Validators.compose([Validators.required])],
       relationship: ['', Validators.compose([Validators.required])],
