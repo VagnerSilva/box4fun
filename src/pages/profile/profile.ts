@@ -1,17 +1,14 @@
 
-import { DataSerivce } from '../../providers/providers'
-
-
-
+import { StorageSerivce } from '../../providers/providers'
 
 export class User {
 
-  private storage = new DataSerivce();
 
-  constructor() { }
+
+  constructor(private storage: StorageSerivce ) { }
 
 /**
- *
+ * Add email
  */
   get email(): any {
     return this.storage.read('user').then(user => {
@@ -24,7 +21,6 @@ export class User {
     let e = {'email': email}
     this.storage.save('user', e);
   }
-
 
 /**
  *
@@ -43,7 +39,5 @@ export class User {
   delete(k): void {
     this.storage.remove(k);
   }
-
-
 
 }

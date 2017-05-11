@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { SurveyPage } from '../pages';
 
 // services
 import {
@@ -20,7 +19,8 @@ import {
   selector: 'page-registration',
   templateUrl: 'registration.html'
 })
-export class RegistrationPage {
+@IonicPage()
+export class Registration {
 
   marca: string = 'Box4Fun';
   user: any = {}
@@ -44,7 +44,7 @@ export class RegistrationPage {
   }
 
   goToSurvey() {
-    this.navCtrl.push(SurveyPage);
+    this.navCtrl.push("Survey");
   }
 
   signUp() {

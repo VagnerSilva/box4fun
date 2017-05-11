@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { Page1 } from '../pages';
+
 
 // services
 import {
@@ -21,7 +21,8 @@ import {
   selector: 'page-forget-password',
   templateUrl: 'forget-password.html'
 })
-export class ForgetPasswordPage {
+@IonicPage()
+export class ForgetPassword {
 
   marca: string = 'Box4Fun';
   resetPass: any;
@@ -47,7 +48,7 @@ export class ForgetPasswordPage {
       this.auth.resetPass(this.email)
         .then(result => {
           this.alert.presentAlert(this.marca, 'Um e-mail foi enviado, para o endereço especificado, com instruções para o reset de senha.');
-          this.navCtrl.push(Page1);
+          this.navCtrl.push("Page1");
         })
         .catch(error => this.alert.presentAlert(this.marca, 'E-mail invalido! Usuário não cadastrado.'));
     }

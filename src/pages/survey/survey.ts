@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 
 
-// pages
-import { HomePage } from '../pages';
+
+
+
+
 
 
 // class
@@ -14,7 +16,8 @@ import { User } from '../profile/profile'
 // services
 import {
   NameValidator,
-  DataSerivce
+  ResponserService,
+  NetworkService
 } from '../../providers/providers';
 /*
 
@@ -29,13 +32,25 @@ import {
   selector: 'page-survey',
   templateUrl: 'survey.html'
 })
-export class SurveyPage {
 
-  public user = new User();
+@IonicPage()
+export class Survey {
+
+  private data: any = {};
   private profile: any = {}
   private surveyForm: any;
+  private ages: string[];
+  private genres: string[];
+  private relationships: any[];
+  private orientations: any[];
+  private _url = "../assets/data/survey.json";
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder) {
+  constructor(
+    public navCtrl: NavController,
+    private formBuilder: FormBuilder,
+    private _http: ResponserService,
+    private netWork: NetworkService
+  ) {
 
     this.surveyForm = formBuilder.group({
       name: ['', Validators.compose([Validators.minLength(5), Validators.maxLength(16), NameValidator.isValid])],
@@ -47,52 +62,34 @@ export class SurveyPage {
   }
 
   ionViewDidLoad() {
-    //  console.log('ionViewDidLoad SurveyPage');
-
-
-    // let profile:any  =  {
-    //   name: 'Silva',
-    //   email: 'vagner23silva'
-    // }
-
-    // this.user.email = 'vanger';
-    // setTimeout(() => {
-    //   this.user.email.then((e) => {
-    //     console.log('email')
-    //     this.user.saveProfile(profile);
-    //     console.log(e);
-    //   })
-    // }, 700)
-
-
-
-    setTimeout(() => {
-      this.user.email.then((e) => {
-
-        console.log('1000');
-      })
-    }, 1000)
-
-    setTimeout(() => {
-      this.user.email.then((e) => {
-        console.log('userBefor')
-        console.log(e);
-
-        console.log('userAfter');
-        let u = new DataSerivce();
-        u.read('user').then((e) => {
-
-          console.log(e);
-        })
-      })
-    }, 700)
-
-
+    this.getResult();
+    this.netWork.verityConnection();
   }
 
   goToHome() {
     this.profile = {};
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push("Home");
   }
+
+  getResult() {
+    return this._http.get(this._url).subscribe(
+      data => {
+        this.data = data;
+        this.ages = data.ageGroup
+        this.genres = data.genre
+        this.selectGenre(false);
+        this.orientations = data.orientation;
+
+      },
+      error => error // TODO
+    )
+  }
+
+  selectGenre(genre) {
+    genre == 'Feminino' ?
+      this.relationships = this.data.woman :
+      this.relationships = this.data.man;
+  }
+
 
 }

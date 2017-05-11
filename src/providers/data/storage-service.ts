@@ -10,11 +10,9 @@ import { Storage } from '@ionic/storage'
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class DataSerivce {
+export class StorageSerivce {
 
-  private storage = new Storage();
-
-  constructor() { }
+  constructor(private storage: Storage) { }
 
   /**
    *
@@ -41,7 +39,7 @@ export class DataSerivce {
    * @return Promise<any>
    */
   read(k: string): Promise<any> {
-    return this.storage.get(k).then(v =>  v);
+    return this.storage.get(k).then(v => v);
   }
 
 }

@@ -12,7 +12,13 @@
 
 
 <ion-content padding>
-  <form [formGroup]="surveyForm" style="padding: 15px 0 0 0;">
+  <form [formGroup]="surveyForm">
+
+    <div class="profile">
+      <button class="profile-picture"></button>
+    </div>
+
+
     <ion-list class="survey">
 
       <ion-item>
@@ -25,15 +31,11 @@
 
       <ion-item>
         <ion-label>Faixa etária</ion-label>
-        <ion-select [(ngModel)]="profile.ageGroup" formControlName="ageGroup"
+        <ion-select interface="popover" [(ngModel)]="profile.ageGroup" formControlName="ageGroup"
                     [class.invalid]="!surveyForm.controls.ageGroup.valid &&
                                       surveyForm.controls.ageGroup.dirty"
-                    interface="action-sheet" cancelText="Cancelar">
-          <ion-option value="a">18-24 anos</ion-option>
-          <ion-option value="j">25-39 anos</ion-option>
-          <ion-option value="ad">40-49 anos</ion-option>
-          <ion-option value="e">50-59 anos</ion-option>
-          <ion-option value="s">60 anos ou mais</ion-option>
+                    cancelText="Cancelar">
+          <ion-option  *ngFor="let age of ages"  value="{{age}}">{{age}}</ion-option>
         </ion-select>
       </ion-item>
 
@@ -42,9 +44,9 @@
         <ion-select [(ngModel)]="profile.genre" formControlName="genre"
                     [class.invalid]="!surveyForm.controls.genre.valid &&
                                      surveyForm.controls.genre.dirty"
-                     interface="action-sheet"  cancelText="Cancelar">
-          <ion-option value="f">Feminino</ion-option>
-          <ion-option value="m">Masculino</ion-option>
+                    (ngModelChange)="selectGenre($event)"
+                     interface="popover"  cancelText="Cancelar">
+          <ion-option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</ion-option>
         </ion-select>
       </ion-item>
 
@@ -53,11 +55,8 @@
         <ion-select [(ngModel)]="profile.relationship" formControlName="relationship"
                     [class.invalid]="!surveyForm.controls.relationship.valid &&
                                      surveyForm.controls.relationship.dirty"
-                     interface="action-sheet"  cancelText="Cancelar">
-          <ion-option value="s">Solteiro</ion-option>
-          <ion-option value="c">Casado</ion-option>
-          <ion-option value="co">Complicado</ion-option>
-          <ion-option value="a">Aberto</ion-option>
+                     interface="popover"  cancelText="Cancelar">
+          <ion-option *ngFor="let relationship of relationships" value="{{relationship}}">{{relationship}}</ion-option>
         </ion-select>
       </ion-item>
 
@@ -67,11 +66,8 @@
         <ion-select [(ngModel)]="profile.orientation" formControlName="orientation"
                     [class.invalid]="!surveyForm.controls.orientation.valid &&
                                      surveyForm.controls.orientation.dirty"
-                     interface="action-sheet"  cancelText="Cancelar">
-          <ion-option value="he">Hétero</ion-option>
-          <ion-option value="ho">Homossexual</ion-option>
-          <ion-option value="bi">Bissexual</ion-option>
-          <ion-option value="tr">Transsexual</ion-option>
+                     interface="popover"  cancelText="Cancelar">
+           <ion-option *ngFor="let orientation of orientations" value="{{orientation}}">{{orientation}}</ion-option>
         </ion-select>
       </ion-item>
 

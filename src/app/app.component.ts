@@ -3,14 +3,12 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { SurveyPage } from '../pages/pages';
-
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = SurveyPage;
+  rootPage:string = 'Survey';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

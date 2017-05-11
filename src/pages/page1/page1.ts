@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 
 //services
@@ -12,12 +12,6 @@ import {
 
 
 
-// pages
-import {
-  HomePage,
-  RegistrationPage,
-  ForgetPasswordPage
-} from '../pages';
 
 /*
   Generated class for the Page1 page.
@@ -29,6 +23,7 @@ import {
   selector: 'page-page1',
   templateUrl: 'page1.html'
 })
+@IonicPage()
 export class Page1 {
 
   marca: string = 'Box4Fun'
@@ -54,15 +49,15 @@ export class Page1 {
 
   // nav pages
   goToHome() {
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push("Home");
   }
 
   goToForgetPassword() {
-    this.navCtrl.push(ForgetPasswordPage);
+    this.navCtrl.push("ForgetPassword");
   }
 
   goToRegistration(): void {
-    this.navCtrl.push(RegistrationPage);
+    this.navCtrl.push("Registration");
   }
 
   // logins

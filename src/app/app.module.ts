@@ -1,18 +1,17 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http'
+
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
 import { Facebook } from "@ionic-native/facebook";
 import { IonicStorageModule }  from '@ionic/storage';
+import { Network } from '@ionic-native/network';
+
+
+
 import { MyApp } from './app.component';
 
-// pages
-import {
-  HomePage,
-  Page1,
-  RegistrationPage,
-  ForgetPasswordPage,
-  SurveyPage
-
-} from '../pages/pages';
 
 // services
 import {
@@ -20,7 +19,9 @@ import {
   EmailValidator,
   NameValidator,
   AlertService,
-  DataSerivce
+  StorageSerivce,
+  ResponserService,
+  NetworkService
 
 } from '../providers/providers';
 
@@ -40,14 +41,11 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    Page1,
-    RegistrationPage,
-    ForgetPasswordPage,
-    SurveyPage
+    MyApp
   ],
   imports: [
+    BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     IonicStorageModule.forRoot({
@@ -58,12 +56,7 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    Page1,
-    RegistrationPage,
-    ForgetPasswordPage,
-    SurveyPage
+    MyApp
   ],
   providers: [
     StatusBar,
@@ -74,7 +67,10 @@ export const firebaseConfig = {
     NameValidator,
     AlertService,
     Facebook,
-    DataSerivce
+    StorageSerivce,
+    ResponserService,
+    NetworkService,
+    Network
   ]
 })
 export class AppModule { }

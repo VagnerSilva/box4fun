@@ -1,12 +1,33 @@
 page-survey {
   font-weight: normal !important;
+
+  ion-content{
+    .scroll-content{
+       overflow: hidden;
+    }
+  }
+
   .button {
     font-size: 1.2em;
     line-height: 1.5;
     text-transform: capitalize;
   }
-
   .invalid {
-        border-bottom: 0px solid #FF6153;
+    border-bottom: 0px solid #FF6153;
+  }
+
+  .profile {
+    text-align: center;
+    .profile-picture {
+      padding: 3px;
+      border-radius: 100%;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      margin: 3px auto;
+      width: 64px;
+      height: 64px;
+      overflow: hidden;
     }
+  }
 }

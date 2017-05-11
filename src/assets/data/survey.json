@@ -1,0 +1,31 @@
+{
+  "ageGroup": [
+    "18-24 anos",
+    "25-39 anos",
+    "40-49 anos",
+    "50-59 anos",
+    "60 anos ou mais"
+  ],
+  "genre": [
+    "Feminino",
+    "Masculino"
+  ],
+  "man": [
+    "Solteiro",
+    "Casado",
+    "Complicado",
+    "Aberto"
+  ],
+  "woman": [
+    "Solteira",
+    "Casada",
+    "Complicado",
+    "Aberto"
+  ],
+  "orientation": [
+    "Hétero",
+    "Homossexual",
+    "Bissexual",
+    "Transsexual"
+  ]
+}
