@@ -1,11 +1,10 @@
 import { async, TestBed } from '@angular/core/testing';
 import { ErrorHandler } from '@angular/core';
-import { IonicModule, IonicErrorHandler, NavController } from 'ionic-angular';
+import { IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/pages'
 
 
 
