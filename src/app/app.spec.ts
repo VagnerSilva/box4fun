@@ -38,12 +38,33 @@ describe('App Component', () => {
 
   it('should be login page', () => {
     console.log(component);
+    new Test().esperaUmSegundo();
     expect(component.rootPage).toBe('Survey');
 
   });
 
 
 })
+
+function Timeout( milliseconds: number = 0 ) {
+  return function( target, key, descriptor ) {
+    console.log('target');
+    console.log(target);
+    console.log('key');
+    console.log(key);
+    console.log('descriptor');
+    console.log(descriptor);
+    var originalMethod = descriptor.value;
+    descriptor.value = function (...args) {
+      setTimeout(() => {
+        originalMethod.apply(this, args);
+       }, milliseconds);
+    };
+    return descriptor;
+  }
+}
+
+
 
 class Test {
 
@@ -54,6 +75,10 @@ class Test {
         ...components,
       ]
     })
-
   }
+
+    @Timeout(1000)
+    esperaUmSegundo(): void {
+        console.log("Imprime no console após um segundo");
+    }
 }
